@@ -1,0 +1,10 @@
+name: devpath_mobile_workspace
+publish_to: none
+environment:
+  sdk: ^3.12.1
+
+# Dart pub workspace — 모바일 앱과 그 디자인 시스템 포크를 단일 해석으로 묶는다.
+# dp_core 는 워크스페이스 멤버가 아니다: devpath-frontend 를 커밋 핀 git 의존성으로 참조한다.
+workspace:
+  - packages/dp_design
+  - apps/mobile
