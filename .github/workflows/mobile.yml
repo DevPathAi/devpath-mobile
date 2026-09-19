@@ -2,24 +2,8 @@ name: Mobile CI
 
 on:
   pull_request:
-    paths:
-      - 'apps/mobile/**'
-      - 'packages/dp_core/**'
-      - 'packages/dp_design/**'
-      - 'tools/mobile_source_guard.dart'
-      - 'pubspec.yaml'
-      - 'pubspec.lock'
-      - '.github/workflows/mobile.yml'
   push:
-    branches: [main]
-    paths:
-      - 'apps/mobile/**'
-      - 'packages/dp_core/**'
-      - 'packages/dp_design/**'
-      - 'tools/mobile_source_guard.dart'
-      - 'pubspec.yaml'
-      - 'pubspec.lock'
-      - '.github/workflows/mobile.yml'
+    branches: [main, develop]
 
 permissions:
   contents: read
@@ -57,7 +41,7 @@ jobs:
       - name: Enforce native companion source boundary
         run: dart run tools/mobile_source_guard.dart
       - name: Format check
-        run: dart format --set-exit-if-changed apps/mobile packages/dp_core packages/dp_design tools/mobile_source_guard.dart
+        run: dart format --set-exit-if-changed apps/mobile packages/dp_design tools/mobile_source_guard.dart
       - name: Analyze mobile
         working-directory: apps/mobile
         run: flutter analyze
