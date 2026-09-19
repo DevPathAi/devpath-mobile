@@ -14,9 +14,14 @@ dependencies:
 
   cupertino_icons: ^1.0.8
 
-  # workspace 멤버(path 결선, resolution: workspace) — web과 동일 공유 계층
+  # dp_core(API·모델)는 devpath-frontend 가 소유한다 — 커밋 핀 git 의존성.
+  # 핀 갱신은 이 레포의 PR 로만 한다(서버 계약 변경을 의식적으로 받아들이는 지점).
   dp_core:
-    path: ../../packages/dp_core
+    git:
+      url: https://github.com/DevPathAi/devpath-frontend.git
+      ref: 7634b63d6a0127eafb4d164b07d71ea1d380c40f
+      path: packages/dp_core
+  # dp_design 은 이 레포가 소유하는 포크다(워크스페이스 멤버).
   dp_design:
     path: ../../packages/dp_design
 
