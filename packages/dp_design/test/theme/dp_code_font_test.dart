@@ -20,7 +20,10 @@ void main() {
   });
 
   test('D2Coding is a lazy asset, not a FontManifest font', () {
-    final pubspec = File('pubspec.yaml').readAsStringSync();
+    // Windows checkout(core.autocrlf=true)은 pubspec.yaml 을 CRLF 로 내려받는다.
+    final pubspec = File(
+      'pubspec.yaml',
+    ).readAsStringSync().replaceAll('\r\n', '\n');
     expect(
       pubspec,
       contains('  assets:\n    - fonts/D2Coding.ttf\n'),
